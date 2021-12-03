@@ -29,52 +29,29 @@
 #ifndef INC_SELF_POS_HPP_
 #define INC_SELF_POS_HPP_
 
-#define DT 0.1
-#define POLE_DISTANCE 2000 //( 3000 , 1000) & ( 3000 , -1000 ) / ( -3000, 1000 ) & ( -3000 , -1000 )
-#define R_SPC 1
-#define L_SPC 2
-
-#include <General_command.hpp>
 #include "main.h"
-#include "ToF.hpp"
+
+typedef struct
+{
+	double x = 0,
+	double y = 0,
+}vector;
+
+#define ODM_RADIUS
+#define ODM_PPR
+#deifine ODM_CIR 2 * ODM_RADIUS * M_PI
 
 class Self_Pos
 {
 public:
-	void set_initial_pos(E_robot_name robot);
-	void update_self_pos(void);
-
-	int16_t get_Self_Pos_X(void);
-	int16_t get_Self_Pos_Y(void);
-
-	void add_Self_Pos( int add_x, int add_y );
-
-	int Self_Pos_config_Limit(void);
-	void update_self_pos_ToF();
-
-//#ifdef M_Self_Pos
-//	void Self_Pos_correction( int pos_x);
-//#else
-//	void Self_Pos_correction( void );
-//#endif
-
-//	void set_angle( int R_or_L );
-//	static int Self_Pos_PE[2];
-	static int out_angle;
+	vector get_self_pos(void);
 private:
-	int encoder_read_5(void);
-	int encoder_read_2(void);
+	double encoder_read_5(void);
+	double encoder_read_2(void);
 
-	void Spin(int goal_angle , bool scan );
-	int calc_diff( int prev_x, int prev_y, int current_x, int current_y );
 
-//	double rad(double deg);
-
-	static int16_t Self_Pos_X;
-	static int16_t Self_Pos_Y;
-
-//	double get_E_direction( void );
-
+	static double Self_Pos_X;
+	static double Self_Pos_Y;
 };
 
 

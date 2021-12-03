@@ -23,7 +23,6 @@
 #define INC_PWM_HPP_
 
 #include "main.h"
-#include "General_command.hpp"
 
 #define PPR 2048
 #define DT 0.1
@@ -42,7 +41,6 @@ class PWM
 {
 public:
 	void V_output(uint16_t V, uint16_t fai, int16_t rotation_speed, uint16_t attitude_angle, E_move_status status);
-	void Front_Move( uint16_t V, uint16_t fai, uint16_t attitude_angle, double Line_dis_diff, E_move_status status);
 	bool rotate(uint16_t V, uint16_t target_angle);
 
 private:
